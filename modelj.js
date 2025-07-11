@@ -1,10 +1,11 @@
 const app = angular.module('myApp', []);
+const SUPABASE_URL = angular.process.env.SUPABASE_URL;
+const SUPABASE_KEY = angular.process.env.SUPABASE_KEY;
+console.log("Supabase URL:", SUPABASE_URL);
+console.log("Supabase Key:", SUPABASE_KEY);
 
 app.controller('MyController', function($scope, $http) {
   const { createClient } = supabase;
-
-  const SUPABASE_URL = angular.process.env.SUPABASE_URL;
-  const SUPABASE_KEY = angular.process.env.SUPABASE_KEY;
 
   const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
 
