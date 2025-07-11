@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color:  #7B452A;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  z-index: 10;
+  background-color: #E6DBC9;
+  color:  #7B452A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo2 {
+  font-weight: 300;
+}
+
+#logoimg {
+  width: 60px;
+  height: 60px;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto;
+  height: 100%;
+  padding-bottom: 60px;
+}
+
+.chat-bubble {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+}
+
+.chat-input {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+}
+.chat-input button {
+  padding: 8px 16px;
+}
+
+.right-align {
+    text-align: right;
+    background-color: #7B452A;
+    color: #ffffff;
+    margin: 15px 5px;
+    padding: 10px;
+    border-radius: 8px;
+    /* max-width: 100%; */
+    align-self: flex-end;
+}
+.left-align {
+    text-align: left;
+    background-color: #E6DBC9;
+    margin: 15px 5px;
+    padding: 10px;
+    border-radius: 8px;
+    /* max-width: 100%; */
+    align-self: flex-start;
+}
+
+.custom-btn {
+  border-color: #7B452A;
+  color: #7B452A;
+}
+
+.custom-btn:hover {
+  background-color: #7B452A;
+  color: white;
+}
+
+.highlight {
+  background-color: #DAAD60 !important;
+  border: 2px solid #7B452A !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dots-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  gap: 4px;
+  margin-bottom: -3px;
+}
+
+.dots-loader div {
+  width: 10px;
+  height: 10px;
+  background: #7B452A;
+  border-radius: 50%;
+  animation: dots-bounce 0.6s infinite alternate;
+}
+
+.dots-loader div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dots-loader div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dots-bounce {
+  to {
+    opacity: 0.3;
+    transform: translateY(-8px);
+  }
+}
+

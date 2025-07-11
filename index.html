@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BoniBot</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+         <a href="/"><div class="logo"><img src="../images/logo.png" id="logoimg"> BoniBot <div class="logo2"> | AI Chatbot </div> </div></a>
+    </div>
+    <div ng-app="myApp" ng-controller="MyController">
+        <div class="chat-container">
+            <div ng-repeat="item in items">
+                <div ng-if="item.sender === 'kamu'" class="right-align">
+                    {{item.text}}
+                </div>
+                <div ng-if="item.sender === 'bot'">
+                    <div class="d-flex gap-2">
+                        <div class="left-align"
+                            ng-repeat="bubble in item.text track by $index"
+                            ng-class="{'highlight': bubble.isRelevant}"
+                            style="flex:1;">
+                        {{bubble.label}} <br> <b>{{bubble.text}}</b>
+                        </div>
+                    </div>           
+                </div>
+                <div ng-if="item.sender === 'botFinal'">
+                    <div class="left-align highlight" style="margin-top: -5px;">kalau menurut Boni, jawaban paling masuk akal adalah <br> <b>{{item.text}}</b></div>
+                </div>
+            </div>
+            <div ng-if="waiting" class="left-align">
+                Tunggu sebentar yaa, Boni berpikir dulu
+                <div class="dots-loader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" ng-model="chatInput" class="form-control" placeholder="Type a message..." ng-keypress="checkEnter($event)" />
+            <button ng-click="sendRequest()" class="btn custom-btn"><i class="bi bi-send"></i></button>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="modelj.js"></script>
+</body>
+</html>
