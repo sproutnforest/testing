@@ -1,0 +1,31 @@
+name: Deploy AngularJS to GitHub Pages
+
+on:
+  push:
+    branches: [main] # or your default branch
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create config.json with secrets
+        run: |
+          echo '{
+            "SUPABASE_URL": "${{ secrets.SUPABASE_URL }}",
+            "SUPABASE_KEY": "${{ secrets.SUPABASE_KEY }}"
+          }' > config.json
+
+      - name: Upload to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .  # Or your build output directory
