@@ -1,20 +1,7 @@
-window.appConfig = {};
-
-  fetch('config.json')
-    .then(res => res.json())
-    .then(cfg => {
-      window.appConfig = cfg;
-      angular.bootstrap(document, ['myApp']);
-    })
-    .catch(err => {
-      console.error("Failed to load config:", err);
-      angular.bootstrap(document, ['myApp']);
-    });
-
 const app = angular.module('myApp', []);
-console.log("Hi");
-const SUPABASE_URL = window.appConfig.SUPABASE_URL;
-const SUPABASE_KEY = window.appConfig.SUPABASE_KEY;
+console.log("Hi")
+const SUPABASE_URL = angular.process.env.SUPABASE_URL;
+const SUPABASE_KEY = angular.process.env.SUPABASE_KEY;
 console.log("Supabase URL:", SUPABASE_URL);
 console.log("Supabase Key:", SUPABASE_KEY);
 
