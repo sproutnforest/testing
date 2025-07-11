@@ -1,4 +1,5 @@
 const app = angular.module('myApp', []);
+console.log("Hi");
 const SUPABASE_URL = angular.process.env.SUPABASE_URL;
 const SUPABASE_KEY = angular.process.env.SUPABASE_KEY;
 console.log("Supabase URL:", SUPABASE_URL);
